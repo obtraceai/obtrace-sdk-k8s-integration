@@ -15,11 +15,11 @@ jobs:
       - name: Set up Helm
         uses: azure/setup-helm@v4
 
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v4
-
       - name: Render chart
         run: helm template obtrace-sdk-integration ./chart >/tmp/obtrace-sdk-k8s-render.yaml
 
-      - name: Validate example manifest (offline)
-        run: kubectl create --dry-run=client --validate=false -f ./obtrace-sdk.example.yaml
+      - name: Validate example manifest with kubeconform
+        run: |
+          curl -fsSL https://github.com/yannh/kubeconform/releases/latest/download/kubeconform-linux-amd64.tar.gz \
+            | tar -xz kubeconform
+          ./kubeconform -strict -summary ./obtrace-sdk.example.yaml
