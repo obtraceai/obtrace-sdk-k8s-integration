@@ -21,5 +21,5 @@ jobs:
       - name: Render chart
         run: helm template obtrace-sdk-integration ./chart >/tmp/obtrace-sdk-k8s-render.yaml
 
-      - name: Validate example manifest
-        run: kubectl apply --dry-run=client --validate=false -f ./obtrace-sdk.example.yaml
+      - name: Validate example manifest (offline)
+        run: kubectl create --dry-run=client -f ./obtrace-sdk.example.yaml
