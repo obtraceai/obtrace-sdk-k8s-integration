@@ -113,3 +113,9 @@ export const obtrace = initNodeSDK({
 2. consultar:
    - `GET /v1/logs` em `query-gateway`
    - tabela `obtrace.raw_otlp_7d|30d|90d` no ClickHouse
+
+## Métricas canônicas
+
+- O chart só injeta contexto e segredos; a normalização de métricas continua responsabilidade da SDK da aplicação.
+- Para Node/Bun use `@obtrace/sdk-js` com `SemanticMetrics`.
+- Para browser use `@obtrace/sdk-browser` com `SemanticMetrics`.
