@@ -21,6 +21,14 @@ spec:
         - name: app
           image: {{ .Values.workload.image | quote }}
           imagePullPolicy: {{ .Values.workload.imagePullPolicy }}
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
           ports:
             - containerPort: {{ .Values.workload.containerPort }}
           env:

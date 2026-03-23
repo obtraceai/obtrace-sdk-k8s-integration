@@ -4,12 +4,12 @@ fullnameOverride: ""
 secret:
   create: true
   name: obtrace-sdk
-  apiKey: "devkey"
+  apiKey: ""
 
 config:
   create: true
   name: obtrace-sdk-config
-  ingestBaseUrl: "http://ingest-edge.obtrace.svc.cluster.local:8080"
+  ingestBaseUrl: "https://ingest-edge.obtrace.svc.cluster.local:8080"
   tenantId: "tenant-dev"
   projectId: "project-dev"
   env: "dev"
@@ -24,5 +24,11 @@ workload:
   imagePullPolicy: IfNotPresent
   replicas: 2
   containerPort: 8080
-  resources: {}
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi
   extraEnv: []

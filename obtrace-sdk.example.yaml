@@ -4,14 +4,14 @@ metadata:
   name: obtrace-sdk
 type: Opaque
 stringData:
-  OBTRACE_API_KEY: "replace-me"
+  OBTRACE_API_KEY: "REPLACE_WITH_YOUR_API_KEY"
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: obtrace-sdk-config
 data:
-  OBTRACE_INGEST_BASE_URL: "http://ingest-edge.obtrace.svc.cluster.local:8080"
+  OBTRACE_INGEST_BASE_URL: "https://ingest-edge.obtrace.svc.cluster.local:8080"
   OBTRACE_TENANT_ID: "tenant-prod"
   OBTRACE_PROJECT_ID: "project-prod"
   OBTRACE_ENV: "prod"
