@@ -11,7 +11,6 @@ kind: ConfigMap
 metadata:
   name: obtrace-sdk-config
 data:
-  OBTRACE_INGEST_BASE_URL: "https://ingest-edge.obtrace.svc.cluster.local:8080"
   OBTRACE_TENANT_ID: "tenant-prod"
   OBTRACE_PROJECT_ID: "project-prod"
   OBTRACE_ENV: "prod"

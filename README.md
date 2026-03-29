@@ -37,7 +37,6 @@ kind: ConfigMap
 metadata:
   name: obtrace-sdk-config
 data:
-  OBTRACE_INGEST_BASE_URL: "https://inject.obtrace.ai"
   OBTRACE_TENANT_ID: "tenant-dev"
   OBTRACE_PROJECT_ID: "project-dev"
   OBTRACE_ENV: "prod"
@@ -69,11 +68,6 @@ spec:
                 secretKeyRef:
                   name: obtrace-sdk
                   key: OBTRACE_API_KEY
-            - name: OBTRACE_INGEST_BASE_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: obtrace-sdk-config
-                  key: OBTRACE_INGEST_BASE_URL
             - name: OBTRACE_TENANT_ID
               valueFrom:
                 configMapKeyRef:
@@ -98,7 +92,6 @@ import { initNodeSDK } from "@obtrace/sdk-js/node";
 
 export const obtrace = initNodeSDK({
   apiKey: process.env.OBTRACE_API_KEY!,
-  ingestBaseUrl: process.env.OBTRACE_INGEST_BASE_URL!,
   tenantId: process.env.OBTRACE_TENANT_ID,
   projectId: process.env.OBTRACE_PROJECT_ID,
   env: process.env.OBTRACE_ENV,

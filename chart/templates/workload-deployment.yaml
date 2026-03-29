@@ -37,11 +37,6 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secret.name }}
                   key: OBTRACE_API_KEY
-            - name: OBTRACE_INGEST_BASE_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ .Values.config.name }}
-                  key: OBTRACE_INGEST_BASE_URL
             - name: OBTRACE_TENANT_ID
               valueFrom:
                 configMapKeyRef:
